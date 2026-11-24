@@ -192,7 +192,7 @@ p, h1, h2, h3, dl, dd { margin: 0; }
 }
 
 .identity,
-.confirmation { padding: clamp(1rem, 3vw, 2rem); }
+.confirmation-details { padding: clamp(1rem, 3vw, 2rem); }
 .section-heading {
   display: flex;
   flex-wrap: wrap;
@@ -202,9 +202,9 @@ p, h1, h2, h3, dl, dd { margin: 0; }
   margin-block-end: 1.25rem;
 }
 
-h2, h3 { color: var(--petrol); font-weight: 900; letter-spacing: -.03em; line-height: 1.12; }
-h2 { font-size: clamp(1.625rem, 3.2vw, 2.5rem); }
-h3 { font-size: 1.375rem; }
+.confirmation-heading h1, h2, h3 { color: var(--petrol); font-weight: 900; letter-spacing: -.03em; line-height: 1.12; }
+.confirmation-heading h1, h2 { font-size: clamp(1.625rem, 3.2vw, 2.5rem); }
+.confirmation-details h2, h3 { font-size: 1.375rem; }
 .scoring:focus-visible { outline: none; }
 .scoring:focus-visible h2 { outline: 3px solid var(--petrol); outline-offset: 3px; }
 .test-mode { color: var(--muted); font-size: .875rem; font-weight: 700; }
@@ -405,6 +405,7 @@ h3 { font-size: 1.375rem; }
 }
 
 .confirmation { animation: enter .42s var(--ease) both; }
+.confirmation-heading { margin-block-end: 2rem; }
 .confirmation-message { margin-block-start: .5rem; color: var(--muted); }
 .identity-summary {
   display: grid;

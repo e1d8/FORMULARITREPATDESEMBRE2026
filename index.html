@@ -1,11 +1,21 @@
 <!doctype html>
-<html lang="ca-valencia">
+<html lang="ca-valencia" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#ff7b71">
-  <meta name="description" content="Formulari de puntuació dels 30 blocs del 1r Open Trepa’t.">
-  <title>Registre de puntuació · 1r Open Trepa’t</title>
+  <meta name="description" content="1R OPEN TREPA'T · DISSABTE 12 DE DESEMBRE">
+  <title>Formulari puntuació</title>
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ca_ES">
+  <meta property="og:title" content="Formulari puntuació">
+  <meta property="og:description" content="1R OPEN TREPA'T · DISSABTE 12 DE DESEMBRE">
+  <meta property="og:url" content="https://e1d8.github.io/FORMULARITREPATDESEMBRE2026/">
+  <meta property="og:image" content="https://e1d8.github.io/FORMULARITREPATDESEMBRE2026/assets/cabra-trepat.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="La cabra de Trepa’t sobre fons coral">
+  <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="preload" href="assets/fonts/Anton-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
@@ -13,11 +23,11 @@
 </head>
 <body id="inici">
   <main>
-    <section class="hero" aria-labelledby="page-title">
+    <section id="form-hero" class="hero" aria-labelledby="page-title">
       <div class="hero-inner container">
         <div class="hero-copy">
           <p class="hero-date">1R OPEN TREPA'T · <time datetime="2026-12-12">DISSABTE 12 DE DESEMBRE</time></p>
-          <h1 id="page-title">Registre de<br class="desktop-break"> puntuació</h1>
+          <h1 id="page-title">Formulari<br class="desktop-break"> puntuació</h1>
           <p class="hero-lead">Anota la puntuació i els intents de cada bloc.</p>
         </div>
         <div class="hero-art" aria-hidden="true">
@@ -29,6 +39,9 @@
     <div class="registration container">
       <noscript><p class="notice">Activa JavaScript per a utilitzar el formulari de puntuació.</p></noscript>
       <form id="resultats" autocomplete="off" novalidate hidden>
+        <p id="return-notice" class="notice" hidden>
+          Per a canviar el nom o qualsevol dada, torna a enviar amb el mateix dorçal.
+        </p>
         <fieldset id="form-controls" class="form-controls">
           <legend class="sr-only">Resultats del participant</legend>
           <section id="dades" class="panel identity" aria-labelledby="identity-title" tabindex="-1">
@@ -36,9 +49,6 @@
               <h2 id="identity-title">Dades del participant</h2>
               <p class="test-mode">Mode de prova · Enviament simulat</p>
             </div>
-            <p id="return-notice" class="notice" hidden>
-              Per a canviar el nom o qualsevol dada, torna a enviar amb el mateix dorçal.
-            </p>
             <div class="identity-grid">
               <div class="field">
                 <div class="field-heading">
@@ -113,25 +123,30 @@
       </form>
       <p id="save-status" class="sr-only" role="status"></p>
 
-      <section id="confirmacio" class="panel confirmation" aria-labelledby="agraiment" hidden>
-        <h2 id="agraiment" tabindex="-1">Gràcies per participar</h2>
-        <p class="confirmation-message">Enviament de prova completat.</p>
-        <dl class="identity-summary">
-          <div><dt>Número de dorçal</dt><dd id="resum-dorsal"></dd></div>
-          <div><dt>Anònim</dt><dd id="resum-anonim"></dd></div>
-          <div><dt>Nom</dt><dd id="resum-nom"></dd></div>
-          <div><dt>Gènere</dt><dd id="resum-genero"></dd></div>
-        </dl>
-        <div class="confirmation-total">Total <strong id="resum-total"></strong></div>
-        <h3>Blocs</h3>
-        <dl id="resum-blocs" class="block-summary"></dl>
+      <section id="confirmacio" class="confirmation" aria-labelledby="agraiment" hidden>
+        <header class="confirmation-heading">
+          <h1 id="agraiment" tabindex="-1">Gràcies</h1>
+          <p class="confirmation-message">Per a canviar el nom o qualsevol dada, torna a replenar el formulari amb el mateix dorçal.</p>
+        </header>
+        <section class="panel confirmation-details" aria-labelledby="summary-title">
+          <h2 id="summary-title">Participant</h2>
+          <dl class="identity-summary">
+            <div><dt>Dorçal</dt><dd id="resum-dorsal"></dd></div>
+            <div><dt>Anònim</dt><dd id="resum-anonim"></dd></div>
+            <div><dt>Nom</dt><dd id="resum-nom"></dd></div>
+            <div><dt>Gènere</dt><dd id="resum-genero"></dd></div>
+          </dl>
+          <div class="confirmation-total">Total <strong id="resum-total"></strong></div>
+          <h3>Blocs</h3>
+          <dl id="resum-blocs" class="block-summary"></dl>
+        </section>
       </section>
     </div>
   </main>
 
   <footer class="footer">
     <div class="container footer-inner">
-      <a href="#inici">Trepa’t <span>· Espai d’Escalada</span></a>
+      <a href="https://trepatespai.com">Trepa’t <span>· Espai d’Escalada</span></a>
     </div>
   </footer>
 

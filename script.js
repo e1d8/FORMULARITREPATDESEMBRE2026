@@ -316,6 +316,7 @@ function showConfirmation({ id, result }) {
   });
   document.getElementById('resum-blocs').replaceChildren(...rows);
 
+  document.getElementById('form-hero').hidden = true;
   form.hidden = true;
   document.getElementById('confirmacio').hidden = false;
   const heading = document.getElementById('agraiment');
