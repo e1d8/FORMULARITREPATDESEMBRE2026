@@ -24,27 +24,10 @@ const saveButton = document.getElementById('guardar');
 const saveError = document.getElementById('save-error');
 const saveStatus = document.getElementById('save-status');
 const returnNotice = document.getElementById('return-notice');
-const formLinks = [document.getElementById('registration-nav'), document.getElementById('start-link')];
 
 let sending = false;
 let failNextSave = new URLSearchParams(window.location.search).get('simulacio') === 'error';
 let openHelpButton = null;
-
-function initMarquee() {
-  const marquee = document.getElementById('marquee');
-  const toggle = document.getElementById('marquee-toggle');
-  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-  function setPaused(paused) {
-    marquee.classList.toggle('is-paused', paused);
-    toggle.setAttribute('aria-label', paused ? 'Reprén l’animació' : 'Pausa l’animació');
-  }
-
-  setPaused(motionPreference.matches);
-  toggle.hidden = false;
-  toggle.addEventListener('click', () => setPaused(!marquee.classList.contains('is-paused')));
-  motionPreference.addEventListener('change', event => setPaused(event.matches));
-}
 
 function showReturnNotice() {
   try {
@@ -334,7 +317,6 @@ function showConfirmation({ id, result }) {
   document.getElementById('resum-blocs').replaceChildren(...rows);
 
   form.hidden = true;
-  for (const link of formLinks) link.hidden = true;
   document.getElementById('confirmacio').hidden = false;
   const heading = document.getElementById('agraiment');
   heading.focus({ preventScroll: true });
@@ -393,5 +375,3 @@ const counters = createBlocks();
 syncAnonymousMode();
 showReturnNotice();
 form.hidden = false;
-for (const link of formLinks) link.hidden = false;
-initMarquee();
