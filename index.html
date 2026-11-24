@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ca-valencia">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#15201f">
+  <meta name="description" content="Formulari de puntuació dels 30 blocs del 1r Open Trepa’t.">
+  <title>Registre de puntuació · 1r Open Trepa’t</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preload" href="assets/fonts/Anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body id="inici">
+  <header class="masthead">
+    <div class="masthead-inner container">
+      <a class="brand" href="#inici" aria-label="Trepa’t, torna a l’inici">
+        <img src="assets/cabra-trepat.png" width="44" height="44" alt="">
+        <span>Trepa’t</span>
+      </a>
+      <nav id="registration-nav" class="masthead-nav" aria-label="Registre de puntuació" hidden>
+        <a href="#dades">Dades</a>
+        <a href="#blocs">Blocs</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-inner container">
+        <div class="hero-copy">
+          <p class="hero-date"><time datetime="2026-12-12">Dissabte 12 de desembre de 2026</time></p>
+          <h1 id="page-title">Registre de<br class="desktop-break"> puntuació</h1>
+          <p class="hero-event">1r Open Trepa’t</p>
+          <p class="hero-lead">Anota la puntuació i els intents de cada bloc.</p>
+          <a id="start-link" class="button button-dark" href="#dades" hidden>Anota els resultats</a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <img src="assets/cabra-trepat.png" width="512" height="512" alt="">
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee is-paused" id="marquee">
+      <div class="marquee-window" aria-hidden="true">
+        <div class="marquee-track">
+          <div class="marquee-copy">
+            <span>Fent el cabra</span><span>Fent el cabra</span><span>Fent el cabra</span>
+            <span>Fent el cabra</span><span>Fent el cabra</span><span>Fent el cabra</span>
+          </div>
+          <div class="marquee-copy">
+            <span>Fent el cabra</span><span>Fent el cabra</span><span>Fent el cabra</span>
+            <span>Fent el cabra</span><span>Fent el cabra</span><span>Fent el cabra</span>
+          </div>
+        </div>
+      </div>
+      <button id="marquee-toggle" class="icon-button marquee-toggle" type="button" aria-label="Pausa l’animació" hidden>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="registration container">
+      <noscript><p class="notice">Activa JavaScript per a utilitzar el formulari de puntuació.</p></noscript>
+      <form id="resultats" autocomplete="off" novalidate hidden>
+        <fieldset id="form-controls" class="form-controls">
+          <legend class="sr-only">Resultats del participant</legend>
+          <section id="dades" class="panel identity" aria-labelledby="identity-title" tabindex="-1">
+            <div class="section-heading">
+              <h2 id="identity-title">Dades del participant</h2>
+              <p class="test-mode">Mode de prova · Enviament simulat</p>
+            </div>
+            <p id="return-notice" class="notice" hidden>
+              Per a canviar el nom o qualsevol dada, torna a enviar amb el mateix dorçal.
+            </p>
+            <div class="identity-grid">
+              <div class="field">
+                <div class="field-heading">
+                  <label for="dorsal">Número de dorçal</label>
+                  <button type="button" class="icon-button help-toggle" aria-label="Ajuda amb el dorçal" aria-expanded="false" aria-controls="dorsal-help">?</button>
+                </div>
+                <input id="dorsal" name="dorsal" type="text" autocomplete="off" autocapitalize="characters"
+                  spellcheck="false" maxlength="20" pattern="[A-Za-z0-9]{1,20}" required aria-describedby="dorsal-help dorsal-error">
+                <p id="dorsal-help" class="field-help" hidden>Introdueix el número del teu dorçal. Reutilitza’l per a actualitzar els resultats.</p>
+                <p id="dorsal-error" class="field-error" role="alert" hidden></p>
+              </div>
+              <div class="field anonymous-field">
+                <div class="field-heading">
+                  <label id="anonymous-label" for="anonimo">Anònim</label>
+                  <button type="button" class="icon-button help-toggle" aria-label="Ajuda amb el mode anònim" aria-expanded="false" aria-controls="anonymous-help">?</button>
+                </div>
+                <label class="switch-control">
+                  <input id="anonimo" name="anonimo" type="checkbox" role="switch" aria-labelledby="anonymous-label" aria-describedby="anonymous-help">
+                  <span class="switch-track" aria-hidden="true"></span>
+                  <span id="anonymous-state" aria-hidden="true">Desactivat</span>
+                </label>
+                <p id="anonymous-help" class="field-help" hidden>Activa’l per a participar sense indicar el nom ni el gènere.</p>
+              </div>
+              <fieldset id="personal-fields" class="personal-fields">
+                <legend class="sr-only">Nom i gènere</legend>
+                <div class="personal-grid">
+                  <div class="field">
+                    <div class="field-heading">
+                      <label for="nombre">Nom</label>
+                      <button type="button" class="icon-button help-toggle" aria-label="Ajuda amb el nom" aria-expanded="false" aria-controls="name-help">?</button>
+                    </div>
+                    <input id="nombre" name="nombre" type="text" autocomplete="name" maxlength="30" required aria-describedby="name-help name-error">
+                    <p id="name-help" class="field-help" hidden>Pots posar un àlies o afegir un cognom per a distingir-te d’altres participants.</p>
+                    <p id="name-error" class="field-error" role="alert" hidden></p>
+                  </div>
+                  <fieldset id="gender-group" class="gender" aria-describedby="gender-error">
+                    <legend>Gènere</legend>
+                    <div class="gender-options">
+                      <label class="choice"><input name="genero" type="radio" value="Femení" required><span class="choice-label">Femení</span></label>
+                      <label class="choice"><input name="genero" type="radio" value="Masculí"><span class="choice-label">Masculí</span></label>
+                      <label class="choice"><input name="genero" type="radio" value="Altre"><span class="choice-label">Altre</span></label>
+                    </div>
+                    <p id="gender-error" class="field-error" role="alert" hidden></p>
+                  </fieldset>
+                </div>
+              </fieldset>
+            </div>
+          </section>
+
+          <section id="blocs" class="scoring" aria-labelledby="scoring-title" tabindex="-1">
+            <div class="section-heading scoring-heading">
+              <h2 id="scoring-title">Blocs</h2>
+              <ul class="score-key" aria-label="Punts per resultat">
+                <li><b>✕</b> 0 punts</li>
+                <li><b>Zona</b> 10 punts</li>
+                <li><b>Top</b> 25 punts</li>
+              </ul>
+            </div>
+            <p id="attempts-help" class="sr-only">Indica de 0 a 99 intents. Pots escriure el número o usar els botons menys i més o les fletxes del teclat.</p>
+            <div class="live-total">
+              <label for="total">Total</label>
+              <output id="total" aria-live="polite" aria-atomic="true">0 punts</output>
+            </div>
+            <div id="block-grid" class="block-grid"></div>
+          </section>
+
+          <div class="save-section">
+            <p id="save-error" class="field-error save-error" role="alert" hidden></p>
+            <button id="guardar" class="button button-primary" type="submit">Guardar resultats</button>
+          </div>
+        </fieldset>
+      </form>
+      <p id="save-status" class="sr-only" role="status"></p>
+
+      <section id="confirmacio" class="panel confirmation" aria-labelledby="agraiment" hidden>
+        <h2 id="agraiment" tabindex="-1">Gràcies per participar</h2>
+        <p class="confirmation-message">Enviament de prova completat.</p>
+        <dl class="identity-summary">
+          <div><dt>Número de dorçal</dt><dd id="resum-dorsal"></dd></div>
+          <div><dt>Anònim</dt><dd id="resum-anonim"></dd></div>
+          <div><dt>Nom</dt><dd id="resum-nom"></dd></div>
+          <div><dt>Gènere</dt><dd id="resum-genero"></dd></div>
+        </dl>
+        <div class="confirmation-total">Total <strong id="resum-total"></strong></div>
+        <h3>Blocs</h3>
+        <dl id="resum-blocs" class="block-summary"></dl>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="#inici">Trepa’t <span>· Espai d’Escalada</span></a>
+    </div>
+  </footer>
+
+  <template id="block-template">
+    <fieldset class="panel block-card">
+      <legend class="block-title"></legend>
+      <div class="score-options">
+        <label class="choice score-none">
+          <input type="radio" value="0" aria-label="Sense puntuació, 0 punts" checked>
+          <span class="choice-label" aria-hidden="true">✕</span>
+        </label>
+        <label class="choice score-zone">
+          <input type="radio" value="10" aria-label="Zona, 10 punts">
+          <span class="choice-label" aria-hidden="true">Zona</span>
+        </label>
+        <label class="choice score-top">
+          <input type="radio" value="25" aria-label="Top, 25 punts">
+          <span class="choice-label" aria-hidden="true">Top</span>
+        </label>
+      </div>
+      <div class="attempt-row">
+        <label class="attempt-label">Intents</label>
+        <div class="counter">
+          <button class="counter-button" type="button" data-step="-1">−</button>
+          <input class="attempt-input" type="text" inputmode="numeric" maxlength="2" pattern="[0-9]{1,2}"
+            autocomplete="off" value="0" spellcheck="false" role="spinbutton"
+            aria-valuemin="0" aria-valuemax="99" aria-valuenow="0" aria-describedby="attempts-help">
+          <button class="counter-button" type="button" data-step="1">+</button>
+        </div>
+      </div>
+    </fieldset>
+  </template>
+</body>
+</html>
